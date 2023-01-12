@@ -15,6 +15,7 @@ def register():
 
 @app.route("/register",methods=["GET","POST"])
 def new_register():
+    print(request.method)
     if request.method=="POST":
         name=request.form["name"]
         email=request.form["email"]
@@ -28,8 +29,9 @@ def new_register():
             "password":password,
         }
         data["user"].append(user)
+        print(data)
         json_utils.write_json(file,data)
-    return redirect("main_page.html")
+    return redirect("/")
             
             
                     
